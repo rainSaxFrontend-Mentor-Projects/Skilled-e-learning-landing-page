@@ -1,0 +1,373 @@
+/* define css variables in root */
+:root {
+    --background-color: hsl(0, 0%, 100%);
+    --bottom-background: linear-gradient(hsl(0, 0%, 100%), hsl(236, 100%, 97%));
+    --footer-color: hsl(233, 54%, 16%);
+    --button1-hover: hsl(234, 25%, 52%);
+    --grey: hsl(232, 10%, 56%);
+    --grid-get-started: hsl(341, 92%, 62%);
+    --grid-get-started-hover: hsl(341, 100%, 83%);
+    --gradient-pink: linear-gradient(hsl(13, 100%, 64%), hsl(322, 87%, 55%));
+    --gradient-blue: linear-gradient(hsl(237, 100%, 64%), hsl(322, 87%, 55%));
+    --fs-18: 1.125rem;
+    --fs-16: 1rem;
+    --fs-56: 3.5rem;
+    --fs-40: 2.5rem;
+    --fs-32: 2rem;
+    --fs-24: 1.5rem;
+    --wrapper: 69.375rem;
+}
+
+/* border-box so padding does not change width / height of elements 
+overflow-x: hidden to allow hero picture to clip out of page but still allow vertical scrolling*/
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    overflow-x: hidden;
+}
+
+/* overflow-x set to hidden so that the picture clips out of the view as the viewport gets smaller */
+body {
+    position: relative;
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--background-color);
+    font-size: var(--fs-18);
+    line-height: 1.56;
+    overflow-x: hidden;
+}
+
+/* apply borderbox to all elements AND all before and after pseudo-elements */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* let the content only go out so far, as based on design files, 16px margins for mobile */
+.wrapper {
+    width: calc(100% - 2rem);
+    max-width: var(--wrapper);
+    margin-inline: auto;
+}
+
+/* for tablets the margin on either side is 2.5 rem. so 5 rem total */
+@media (max-width: 48em) {
+    .wrapper {
+        width: calc(100% - 5rem);
+    }
+}
+
+/********************************* HEADER *******************************/
+
+.header-container {
+    width: 100vw;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2.42rem;
+    width: calc(100% - 2rem);
+    max-width: var(--wrapper);
+}
+
+/* clamp function can save from writing media queries */
+header>img {
+    margin-top: 1rem;
+    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 1.57rem + 0.751vw, 2.25rem);
+}
+
+header>button {
+    width: 10.4375rem;
+    height: 3.5rem;
+    border-radius: 1.75rem;
+    border: 0;
+    background-color: var(--footer-color);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+}
+
+header>button:hover {
+    background-color: var(--button1-hover);
+}
+
+@media (max-width: 48em) {
+    header>button {
+        width: 8.75rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 48em) {
+    header {
+        width: calc(100% - 5rem);
+    }
+}
+
+@media (max-width: 23.4375rem) {
+    header {
+        width: calc(100% - 2rem);
+        margin-top: 1rem;
+    }
+}
+
+/********************************* TOP CONTENT *********************************/
+
+/* vertically align items in the flexbox & set the height based on design docs */
+
+.top-content {
+    display: flex;
+    align-items: center;
+    height: 47rem;
+
+}
+
+/* each item should take 50% width*/
+.top-left {
+    flex-basis: 50%;
+}
+
+.top-left>h1 {
+    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 2.147887323943662rem + 1.5023474178403755vw, 3.5rem);
+    line-height: 70px;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* set margins for p for appropriate spacing based on design docs */
+.top-left>p {
+    color: var(--grey);
+    width: clamp(21.4375rem, 19.19rem + 9.58vw, 27.8125rem);
+    height: 5.25rem;
+    margin-top: 1.81rem;
+    margin-bottom: 2.85rem;
+    font-size: 1rem;
+    font-size: clamp(1rem, 0.956rem + 0.188vw, 1.125rem);
+}
+
+.top-left>button {
+    width: 10.4375rem;
+    height: 3.9375rem;
+    border-radius: 1.96875rem;
+    border: 0;
+    background: var(--gradient-pink);
+    color: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+}
+
+.top-left>button:hover {
+    opacity: 50%;
+}
+
+/* lower z index so button can still be accessed */
+.top-right {
+    width: 991.63px;
+    height: 936.92px;
+    z-index: -1;
+    position: relative;
+}
+
+.top-right>img {
+    position: relative;
+    bottom: 15%;
+    margin-left: 100px;
+}
+
+@media (max-width:48em) {
+    .top-content {
+        height: 35.5rem;
+    }
+
+    .top-left>button {
+        font-size: 1rem;
+        width: 10.4375rem;
+        height: 3.5rem;
+    }
+
+    .top-right>img {
+        content: url(./assets/image-hero-tablet.webp);
+        padding-top: 200px;
+        margin-left: -80px;
+    }
+}
+
+@media (max-width:23.4375em) {
+
+    .top-content {
+        height: 45rem;
+        margin-top: 2.38rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 327px;
+        height: 301px;
+        margin-top: 30%;
+    }
+
+    .top-right>img {
+        content: url(./assets/image-hero-mobile.webp);
+        margin-left: 0;
+        padding: 0;
+    }
+}
+
+/* broken */
+
+.lower-page-gradient {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    bottom: 0;
+    background: var(--bottom-background);
+    z-index: -2;
+}
+
+/********************************* BOTTOM GRID **********************************/
+
+.lower-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.87rem;
+    row-gap: 3.5rem;
+}
+
+.card {
+    width: clamp(17.6875rem, 16.301rem + 5.915vw, 21.625rem);
+    height: clamp(17.6875rem, 16.301rem + 5.915vw, 21.625rem);
+    padding: 4rem 2rem 2.5rem 2rem;
+    border-radius: 0.9375rem;
+    background-color: white;
+    position: relative;
+}
+
+.card>h3 {
+    margin-top: 0;
+    font-weight: 800;
+    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.162rem + 0.376vw, 1.5rem);
+}
+
+.card>p {
+    color: var(--grey);
+    font-size: 1rem;
+    font-size: clamp(1rem, 0.956rem + 0.188vw, 1.125rem);
+}
+
+.card#courses {
+    color: white;
+    background: var(--gradient-pink);
+}
+
+.card#courses>h2 {
+    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 1.324rem + 0.751vw, 2rem);
+    line-height: 2.5rem;
+    margin: 0;
+}
+
+.card>img {
+    position: absolute;
+    transform: translateY(-5.5rem)
+}
+
+.card>button {
+    color: var(--grid-get-started);
+    border: 0px;
+    background: transparent;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    position: absolute;
+    bottom: 12%;
+}
+
+.card>button:hover {
+    opacity: 50%;
+}
+
+/************************************* FOOTER **************************************/
+
+.footer-container {
+    margin-top: 2rem;
+    background-color: var(--footer-color);
+    height: 100%;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    width: calc(100% - 2rem);
+    max-width: var(--wrapper);
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer>button {
+    color: white;
+    background: var(--gradient-blue);
+    border-radius: 1.75rem;
+    border: 0;
+    width: clamp(8.75rem, 8.156rem + 2.535vw, 10.4375rem);
+    height: clamp(3rem, 2.824rem + 0.751vw, 3.5rem);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.125rem;
+    font-size: clamp(1rem, 0.956rem + 0.188vw, 1.125rem);
+    font-weight: 700;
+}
+
+footer>button:hover {
+    background: linear-gradient(hsl(237, 100%, 80%), hsl(322, 87%, 80%));
+}
+
+footer>img {
+    font-size: 1.75rem;
+    font-size: clamp(1.75rem, 1.573943661971831rem + 0.7511737089201878vw, 2.25rem);
+}
+
+@media (max-width:48em) {
+    .lower-content {
+        margin-top: 4rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 23.4375em) {
+    .lower-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: .5fr repeat(5, 1fr);
+    }
+
+    .card>button {
+        bottom: 5%;
+    }
+
+    .card#courses {
+        height: 120px;
+        padding: 1rem;
+    }
+}
